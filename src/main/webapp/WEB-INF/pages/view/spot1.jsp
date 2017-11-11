@@ -1,7 +1,5 @@
-<html>
-<body>
-<h1>Why is He Always Peeing?</h1>
+<%@ include file="../header.jsp" %>
+
 <label>SPOT 1 marker</label>
 <h3>${message}</h3>
-</body>
-</html>
+<h3>User: ${cookie.user.value}</h3>

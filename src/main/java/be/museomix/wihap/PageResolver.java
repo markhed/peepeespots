@@ -6,6 +6,8 @@ import java.util.Set;
 public class PageResolver {
 	
 	static final String VIEW_PATH = "view/";
+	static final String LOGIN = "login";
+	static final String WELCOME = "welcome";
 	private static final String UNKNOWN_SPOT_FALLBACK = "unknown";
 	
 	private static Set<String> knownSpots = new HashSet<String>();
