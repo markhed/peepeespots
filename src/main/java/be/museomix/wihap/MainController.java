@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MainController {
 	
+	private static int COUNTER = 0;
+	
 	@RequestMapping(value = "/{spotId}", method = RequestMethod.GET)
 	public String handleSpotReading(@PathVariable String spotId, HttpServletRequest request) {
 		String user = determineUser(request);
@@ -32,15 +34,32 @@ public class MainController {
 		if (user == null) {
 			return PageResolver.LOGIN;
 		}
+		COUNTER++;
 		
 		model.addAttribute("message", "You are in spot: " + spotId);
 		model.addAttribute("user", user);
+		model.addAttribute("counter", COUNTER);
 		return PageResolver.getPageIndex(spotId);
 	}
 	
 	@RequestMapping(value = PageResolver.LOGIN, method = RequestMethod.GET)
 	public String handleLogIn(HttpServletResponse response) {
+		COUNTER = 0;
 		return PageResolver.LOGIN;
+	}
+	
+	@RequestMapping(value = PageResolver.CHECK_WINNER, method = RequestMethod.GET)
+	public String handleWinner(
+			@CookieValue(value="user", required = false) String user, HttpServletResponse response, ModelMap model) {
+		model.addAttribute("user", user);
+		model.addAttribute("counter", COUNTER);
+		
+		if (COUNTER >= 5) {
+			COUNTER = 0;
+			return PageResolver.WINNER;	
+		} else {
+			return PageResolver.CHECK_WINNER;
+		}
 	}
 	
 	@RequestMapping(value = PageResolver.WELCOME, method = RequestMethod.GET)
