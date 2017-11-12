@@ -1,3 +1,3 @@
 <%@ include file="header.jsp" %>
  
-<h3>UNKNOWN PAGE</h3>
+<h3>PROHIBITED PAGE</h3>
