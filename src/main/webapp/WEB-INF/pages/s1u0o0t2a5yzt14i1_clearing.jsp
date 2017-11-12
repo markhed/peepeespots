@@ -1,6 +1,1 @@
-<%@ include file="header.jsp" %>
-
-<label>SPOT 1 CLEARED</label>
-<h3>${user}</h3>
-<h3>${points}</h3>
-<h3>User: ${cookie.user.value}</h3>
+<!DOCTYPE html><html><head><style>body {background-color: #ffed00;}h1   {color: black;}p    {color: black;}</style></head><body><h1>Yes, indeed, the bride is dressed in black!</h1><p>In the medieval times, people would mostly get married in black. It is only in the nineteenth century when the English queen Victoria wore a white dress that the fashion spread.</p><img src="https://i.imgur.com/iT96Wec.jpg"/><img src="https://i.imgur.com/oDQAgFs.png"/></body></html>

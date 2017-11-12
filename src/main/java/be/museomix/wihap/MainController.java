@@ -84,6 +84,11 @@ public class MainController {
 			
 		model.addAttribute("user", user);
 		model.addAttribute("points", USERS.get(user));
+		
+		if (S5_PATH.equalsIgnoreCase(spotPath)) {
+			updateUser(user, 6);
+		}
+		
 		return spotPage;
 	}
 	
@@ -151,8 +156,8 @@ public class MainController {
 			return CHECK_WINNER_PAGE;
 		}
 		
-		model.addAttribute("user", user);
 		currentWinner = null;
+		model.addAttribute("user", user);
 		return WINNER_PAGE;	
 	}
 	
@@ -217,7 +222,7 @@ public class MainController {
 	
 	
 	private void addUser(String user) {
-		USERS.put(user, 0);
+		USERS.put(user, 1);
 	}
 	
 	private void updateUser(final String user, int newPoints) {
@@ -258,7 +263,7 @@ public class MainController {
 	static final String S4_PATH = "s4xmwcmveythghyv4";
 	static final String S5_PATH = "s5542i5ysa97z4maj";
 	
-	static final String LOGIN_PAGE = "login";
+	static final String LOGIN_PAGE = "s0asiev9uq6gp79sh";
 	static final String LOGIN_CONFIRMATION_PAGE = "login_confirmed";
 	
 	static final String PROHIBITED_PAGE = "prohibited";

@@ -1,6 +1,1 @@
-<%@ include file="header.jsp" %>
-
-<label>SPOT 2 CLEARED</label>
-<h3>${user}</h3>
-<h3>${points}</h3>
-<h3>User: ${cookie.user.value}</h3>
+<!DOCTYPE html><html><head><style>body {background-color: #ffed00;}h1   {color: black;}p    {color: black;}</style></head><body><h1>Wonderful! You are right!</h1><img src="https://i.imgur.com/7eOqNFz.jpg"/></body></html>
