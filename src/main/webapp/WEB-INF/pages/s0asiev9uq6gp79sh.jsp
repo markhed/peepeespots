@@ -1,18 +1,12 @@
+<%@ include file="header.jsp" %>
+
 <!DOCTYPE html>
-<html>
-<head>
-<style>
-body {background-color: #ffed00;}
-h1   {color: black;}
-p    {color: black;}
-</style>
-</head>
-<body>
+
 
 <h1>WHY IS HE ALWAYS PEEING?</h1>
 <p>Explore the Brussels City Museums to discover the little boy's legends!</p>
 
-h1>To succeed in the game, complete the five missions and collect the rewards in each museums.</h1>
+<h1>To succeed in the game, complete the five missions and collect the rewards in each museums.</h1>
 
 <img src="https://i.imgur.com/nXhC5z2.png"/>
 <p>In the Maison du Roi, travel time and find out about the history of Brussels through its sculptures, paintings, maps, models, tapestries, and last but not least, the original statue of Manneken-Pis!</p>
@@ -35,7 +29,9 @@ Scan the QR code on the Pee spot to receive the clue that will lead you to an it
 Once you find it, look for the pee spot around, scan it and answer the riddle.
 The answer will give you the clue to carry on your mission and find out one of the little boy’s legend!</p>
 
-<h3>Write in your name</h3> 
+<br/>
+<br/>
+<h1>Write in your name</h1> 
 <form action="/PeePeeSpotsApp/login_confirmed" method="get">
     User name: <input type="text" name="user"/>
     <input type="submit" value="Go"/>

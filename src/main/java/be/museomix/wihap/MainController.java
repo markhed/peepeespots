@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MainController {
 	
 	private static final Map<String, Integer> USERS = new HashMap<String, Integer>();
-	private String currentWinner;
+	private static boolean WINNER_EXISTS;
 	
 	@RequestMapping(value = LOGIN_PAGE, method = RequestMethod.GET)
 	public String handleLogIn(HttpServletResponse response) {
@@ -87,6 +87,7 @@ public class MainController {
 		
 		if (S5_PATH.equalsIgnoreCase(spotPath)) {
 			updateUser(user, 6);
+			WINNER_EXISTS = true;
 		}
 		
 		return spotPage;
@@ -152,11 +153,11 @@ public class MainController {
 	@RequestMapping(value = CHECK_WINNER_PAGE, method = RequestMethod.GET)
 	public String handleWinner(
 			@CookieValue(value="user", required = false) String user, HttpServletResponse response, ModelMap model) {
-		if (currentWinner == null) {
+		if (!WINNER_EXISTS) {
 			return CHECK_WINNER_PAGE;
 		}
 		
-		currentWinner = null;
+		WINNER_EXISTS = false;
 		model.addAttribute("user", user);
 		return WINNER_PAGE;	
 	}
@@ -172,6 +173,10 @@ public class MainController {
 	private boolean isUserAllowedInPage(String user, String pageRequested) {
 		int requiredPoints = getRequiredPointsForPage(pageRequested);
 		Integer currentPoints = USERS.get(user);
+		
+		if (currentPoints == null) {
+			return false;
+		}
 		
 		if (currentPoints == requiredPoints) {
 			return true;
@@ -232,15 +237,15 @@ public class MainController {
 		}
 		
 		USERS.put(user, newPoints);
-		if (isWinningPoints(newPoints)) {
-			final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-		    executorService.scheduleAtFixedRate(new Runnable() {
-		        @Override
-		        public void run() {
-		        	currentWinner = user;
-		        }
-		    }, 0, 2, TimeUnit.SECONDS);
-		}
+//		if (isWinningPoints(newPoints)) {
+//			final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+//		    executorService.scheduleAtFixedRate(new Runnable() {
+//		        @Override
+//		        public void run() {
+//		        	winnerExists = true;
+//		        }
+//		    }, 0, 2, TimeUnit.SECONDS);
+//		}
 	}
 	
 	private static boolean isWinningPoints(int points){
